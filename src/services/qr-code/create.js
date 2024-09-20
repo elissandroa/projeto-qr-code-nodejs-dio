@@ -1,12 +1,12 @@
 import prompt from "prompt"
 import chalk from "chalk";
-import { promptQRCode } from "../../prompts/prompt-qrcode.js";
+import { PromptSchemaQrCode } from "../../prompts-schema/prompt-schema-qrcode.js";
 import handle from "./handle.js";
 
 
-promptQRCode
+PromptSchemaQrCode
 
 export const createQRCode = async () => {
-    prompt.get(promptQRCode, handle);
+    prompt.get(PromptSchemaQrCode, handle);
     prompt.start();
 }
