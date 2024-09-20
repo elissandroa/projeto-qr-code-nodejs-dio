@@ -1,23 +1,23 @@
 async function permitedCharacters() {
-    let permited = [];
+    let permitted = [];
 
     if (process.env.UPPERCASE_LETTERS === "true") {
-        permited.push(... "ABCDEFGHIJKLMNOPQWRSTUVXYZ");
+        permitted.push(..."ABCDEFGHIJKLMNOPQWRSTUVXYZ");
     }
 
     if (process.env.LOWERCASE_LETTERS === "true") {
-        permited.push(... "abcdefghijklmnoprstuvwxyz");
+        permitted.push(..."abcdefghijklmnoprstuvwxyz");
     }
 
     if (process.env.NUMBERS === "true") {
-        permited.push(... "0123456789");
+        permitted.push(..."0123456789");
     }
 
     if (process.env.SPECIAL_CHARACTERS === "true") {
-        permited.push(... "@#$%&*!()_-=+?")
+        permitted.push(..."@#$%&*!()_-=+?");
     }
 
-    return permited;
+    return permitted;
 }
 
 
@@ -26,13 +26,12 @@ async function handle() {
     let password = "";
     const passwordLenght = process.env.PASSWORD_LENGTH;
     characters = await permitedCharacters();
-
-
+  
     for (let i = 0; i < passwordLenght; i++) {
-        const index = Math.floor(Math.random() * characters.length)
+        const index = Math.floor(Math.random() * characters.length);
         password += characters[index];
-        return password;
     }
+    return password;
 }
 
 export default handle;
